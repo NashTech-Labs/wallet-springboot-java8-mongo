@@ -86,7 +86,7 @@ Provided endpoint : `http://localhost:8080//api/wallet/{customerId}/deposit/{amo
 
 Allows one to deposit amount into a wallet.
 
-* ### f) Perform a transfer from one wallet to another wallet :
+* ### e) Perform a transfer from one wallet to another wallet :
 
 Provided endpoint :
 `http://localhost:8080/api/wallet/{fromWalletId}/transfer/{toWalletId}/amount/{amount}`.
@@ -94,7 +94,7 @@ Provided endpoint :
 Allows one to transfer money  one wallet to  another wallet.
 
 Since one user only have one wallet , So we keep customerId equal to walletId. It means ```customerId = walletId```.
-* ### g) Return all transactions for an account :
+* ### f) Return all transactions for a wallet :
 
 Provided endpoint :  `http://localhost:8080/api/wallet/{walletId}/transactions`.
 
