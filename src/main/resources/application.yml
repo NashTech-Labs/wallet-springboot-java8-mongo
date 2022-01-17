@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: virtual-wallet
+  port: 8081
+  profiles:
+    active: local
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/virtual-wallet
