@@ -51,25 +51,41 @@ password: password
 * ### a) Create a new customer :
 
 Endpoint: 
-```http://localhost:8080/api/customer```
+```http://localhost:8080/api/customer/register```
 
 Use post request as
 ```
 {
  "email" : "email",
  "fname": "first name",
- "lname": "last name"   
+ "lname": "last name",
+ "password": "pass"  
 }
 ```
-Above Api will return ```customerId```. Use this id to create wallet in next request
+Above Api will return ```customerId```. Use this id to create wallet in next request. Also ```customerId = walletId```
 
-* ### b) Get a customer detail by email:
+* ### b) Sign In:
+
+Endpoint:
+``` 
+http://localhost:8080/api/customer/login
+```
+Use post request as
+
+```
+{
+  "email": "email",
+  "password": "password
+}
+```
+
+* ### c) Get a customer detail by email:
 
 ```
 http://localhost:8080/api/customer/{email}
 ```
 
-* ### c) Create a new wallet for a user :
+* ### d) Create a new wallet for a user :
 
 I am assuming a user can have a single account lined with wallet.
 
@@ -80,13 +96,13 @@ http://localhost:8080/api/wallet/{customerId}
 
 I used `Postman` for this, since it provides easy interface for sending post request.
 
-* ### d) Perform a deposit transaction on a wallet :
+* ### e) Perform a deposit transaction on a wallet :
 
 Provided endpoint : `http://localhost:8080//api/wallet/{customerId}/deposit/{amount}`
 
 Allows one to deposit amount into a wallet.
 
-* ### e) Perform a transfer from one wallet to another wallet :
+* ### f) Perform a transfer from one wallet to another wallet :
 
 Provided endpoint :
 `http://localhost:8080/api/wallet/{fromWalletId}/transfer/{toWalletId}/amount/{amount}`.
@@ -94,7 +110,7 @@ Provided endpoint :
 Allows one to transfer money  one wallet to  another wallet.
 
 Since one user only have one wallet , So we keep customerId equal to walletId. It means ```customerId = walletId```.
-* ### f) Return all transactions for a wallet :
+* ### g) Return all transactions for a wallet :
 
 Provided endpoint :  `http://localhost:8080/api/wallet/{walletId}/transactions`.
 

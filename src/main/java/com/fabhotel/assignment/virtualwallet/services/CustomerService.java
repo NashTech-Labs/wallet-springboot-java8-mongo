@@ -2,7 +2,9 @@ package com.fabhotel.assignment.virtualwallet.services;
 
 import com.fabhotel.assignment.virtualwallet.exception.CustomerAlreadyCreatedException;
 import com.fabhotel.assignment.virtualwallet.exception.CustomerDoesNotExistException;
+import com.fabhotel.assignment.virtualwallet.exception.PasswordDoesNotMatchException;
 import com.fabhotel.assignment.virtualwallet.models.Customer;
+import com.fabhotel.assignment.virtualwallet.models.CustomerCredentials;
 
 public interface CustomerService {
 
@@ -22,4 +24,10 @@ public interface CustomerService {
      */
     public Customer getCustomerEmail(String email) throws CustomerDoesNotExistException;
 
+    /**
+     * @param credentials : credentials of customer
+     * @throws CustomerDoesNotExistException - if customer doest not exist
+     * @throws PasswordDoesNotMatchException - if password does not match
+     */
+    public void signIn(CustomerCredentials credentials) throws CustomerDoesNotExistException, PasswordDoesNotMatchException;
 }

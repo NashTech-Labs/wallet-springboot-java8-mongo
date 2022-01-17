@@ -21,7 +21,7 @@ public class WalletExceptionHandler {
     public ResponseEntity<String> handle(CustomerAlreadyHasWalletException ex, HttpServletRequest request, HttpServletResponse response) {
         logger.info("Customer already wallet");
 
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
 
     }
 
@@ -49,13 +49,18 @@ public class WalletExceptionHandler {
     @ExceptionHandler(CustomerAlreadyCreatedException.class)
     public ResponseEntity<String> handle(CustomerAlreadyCreatedException ex, HttpServletRequest request, HttpServletResponse response) {
 
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
 
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<String> handle(ConstraintViolationException ex, HttpServletRequest request, HttpServletResponse response) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PasswordDoesNotMatchException.class)
+    public ResponseEntity<String> handle(PasswordDoesNotMatchException ex, HttpServletRequest request, HttpServletResponse response) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
 
     }
 

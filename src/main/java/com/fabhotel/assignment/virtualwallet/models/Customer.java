@@ -18,11 +18,14 @@ public class Customer {
     @Indexed(unique = true)
     @NotBlank
     private String email;
+    @NotBlank
+    private String password;
 
-    public Customer(String fname, String lname, String email) {
+    public Customer(String fname, String lname, String email, String password) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+        this.password = password;
     }
 
     public String getUserId() {
@@ -57,4 +60,7 @@ public class Customer {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
 }

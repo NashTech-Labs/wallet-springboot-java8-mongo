@@ -33,9 +33,10 @@ public class WalletController {
         logger.info("Received request to create new wallet by customer : {}", customerId);
         ServiceResponse response = new ServiceResponse();
 
-        walletService.createWallet(customerId);
+        Wallet wallet = walletService.createWallet(customerId);
         response.setDescription("Wallet created successfully!");
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        response.setData("walletId " + wallet.getWalletId());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping("/api/wallet/{customerId}/deposit/{amount}")
@@ -45,9 +46,9 @@ public class WalletController {
 
         ServiceResponse response = new ServiceResponse();
         logger.info("Received request to deposit amount to wallet by : {}", customerId);
-        Wallet ac = walletService.depositToWallet(customerId, amount, "DEPOSIT");
+        Wallet wallet = walletService.depositToWallet(customerId, amount, "DEPOSIT");
         response.setDescription("Amount " + amount + " deposited successfully!!");
-        response.setData(ac);
+        response.setData(wallet);
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
@@ -72,10 +73,9 @@ public class WalletController {
 
         ServiceResponse response = new ServiceResponse();
         logger.info("Received request to view transaction statement for walletId : {}", walletId);
-        List<WalletTransaction> lb = walletService.getStatement(walletId);
+        List<WalletTransaction> walletTransactions = walletService.getStatement(walletId);
         response.setDescription("Statement fetched successfully!!");
-        logger.info("object: {}", lb.get(0));
-        response.setData(lb);
+        response.setData(walletTransactions);
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
