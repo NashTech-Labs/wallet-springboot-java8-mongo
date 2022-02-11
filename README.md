@@ -17,7 +17,7 @@ Following steps illustrate procedures you need to follow to run the code :
 `Step 1` : Download the repository
 
 ```{shell}
-$ git clone https://github.com/Munandermaan/virtual-wallet.git
+$ git clone https://github.com/knoldus/wallet-springboot-java8-mongo.git
 $ cd virtual-wallet
 ```
 `Step 2` : Run the docker-compose file with this command 
